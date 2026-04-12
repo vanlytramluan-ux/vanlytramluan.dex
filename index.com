@@ -1,0 +1,3396 @@
+<!DOCTYPE html>
+
+
+
+<html lang="vi">
+
+
+
+<head>
+
+
+
+    <meta charset="UTF-8">
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Vạn Lý Trầm Luân - Giới Thiệu Team</title>
+
+
+
+    
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital@1&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+VN:wght@700;900&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+    <style>
+
+
+
+        /* --- Reset & Chung --- */
+
+
+
+        * {
+
+
+
+            box-sizing: border-box;
+
+
+
+            margin: 0;
+
+
+
+            padding: 0;
+
+
+
+        }
+
+
+
+
+
+
+
+        body {
+
+
+
+            height: 100vh;
+
+
+
+            display: flex;
+
+
+
+            justify-content: center;
+
+
+
+            align-items: center;
+
+
+
+            overflow: hidden; /* Giữ sóng ở đáy */
+            
+            background: linear-gradient(to bottom, #0f172a, #020617);
+    color: #e5e7eb;
+
+
+
+            background-color: #1a1a1a; /* Nền tối bên ngoài tờ báo */
+
+
+
+            font-family: 'IM Fell English', serif;
+
+
+
+            color: #333;
+
+
+
+            line-height: 1.6;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* --- Hiệu ứng nền Giấy Báo Cũ --- */
+
+
+
+        .newspaper-background {
+
+
+
+            position: fixed;
+
+
+
+            width: 100%;
+
+
+
+            height: 100%;
+
+
+
+            background-color: #f4e4bc; /* Màu nền giấy ố vàng */
+
+
+
+            /* Tạo texture giấy báo cũ bằng gradient và noise */
+
+
+
+            background-image: 
+
+
+
+                linear-gradient(rgba(244, 228, 188, 0.9), rgba(244, 228, 188, 0.9)),
+
+
+
+                url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.1"/></svg>');
+
+
+
+            filter: sepia(20%) contrast(95%);
+
+
+
+            z-index: -2;
+            
+            display: none;
+
+
+
+        }
+
+
+
+        
+
+
+
+        /* Các vết ố trên giấy */
+
+
+
+        .newspaper-overlay {
+
+
+
+            position: fixed;
+
+
+
+            width: 100%;
+
+
+
+            height: 100%;
+
+
+
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* Texture sợi giấy */
+
+
+
+            opacity: 0.3;
+
+
+
+            z-index: -1;
+
+
+
+            pointer-events: none;
+            
+            display: none;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* --- Hiệu ứng Sóng Biển (CSS Animation) --- */
+
+
+
+        .ocean { 
+
+
+
+            height: 15vh; /* Độ cao vùng sóng */
+
+
+
+            width: 100%;
+
+
+
+            position: absolute;
+
+
+
+            bottom: 0;
+
+
+
+            left: 0;
+
+
+
+            background: transparent;
+
+
+
+            z-index: 10; /* Nằm trên nền giấy nhưng dưới nội dung */
+
+
+
+            pointer-events: none; /* Không cản trở click */
+
+
+
+        }
+
+
+
+
+
+
+
+        .wave {
+
+
+
+            background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x; 
+
+
+
+            position: absolute;
+            
+            filter: hue-rotate(180deg) brightness(0.4);
+
+
+
+            top: -55px;
+
+
+
+            width: 6400px;
+
+
+
+            height: 198px;
+
+
+
+            animation: wave 10s linear infinite;
+
+
+
+            transform: translate3d(0, 0, 0);
+
+
+
+            opacity: 0.25; /* Làm mờ sóng để hợp với màu giấy */
+
+
+
+        }
+
+
+
+
+
+
+
+        .wave:nth-of-type(2) {
+
+
+
+            top: -40px;
+
+
+
+            animation: wave 14s linear infinite reverse;
+
+
+
+            opacity: 0.4;
+
+
+
+        }
+
+
+
+
+
+
+
+        @keyframes wave {
+
+
+
+            0% { margin-left: 0; }
+
+
+
+            100% { margin-left: -1600px; }
+
+
+
+        }
+
+
+
+
+
+
+
+        @keyframes swell {
+
+
+
+            0%, 100% { transform: translate3d(0,-25px,0); }
+
+
+
+            50% { transform: translate3d(0,5px,0); }
+
+
+
+        }
+
+
+
+
+
+
+
+        /* --- Container Sách/Báo --- */
+
+
+
+        .book-container {
+
+
+
+            width: 80%;
+
+
+
+            height: 85vh;
+
+
+
+            max-width: 1000px;
+
+
+
+            background: transparent;
+
+
+
+            position: relative;
+
+
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+
+
+            perspective: 1500px;
+
+
+
+            z-index: 5;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* --- Style cho từng Trang --- */
+
+
+
+        .page {
+
+
+
+            width: 100%;
+
+
+
+            height: 100%;
+
+
+
+            position: absolute;
+
+
+
+            top: 0;
+
+
+
+            left: 0;
+
+
+
+            padding: 40px 60px;
+
+
+
+            overflow-y: auto; /* Cho phép cuộn nếu nội dung dài */
+
+
+
+             
+             background: linear-gradient(
+    to bottom,
+    rgba(245, 222, 179, 0.96),
+    rgba(222, 184, 135, 0.95)
+);
+
+
+
+            background: linear-gradient(to bottom, #F5E6C8, #EADBC8);
+    
+    color: #2b2b2b;
+
+            box-shadow:
+        inset 0 0 40px rgba(0,0,0,0.2),
+        0 10px 30px rgba(0,0,0,0.4);
+
+
+            border: 1px solid #d3c098;
+
+
+
+            
+
+
+
+            /* Hiệu ứng chuyển trang */
+
+
+
+            transition: transform 0.8s ease-in-out, opacity 0.6s ease-in-out, visibility 0.6s;
+
+
+
+            opacity: 0;
+
+
+
+            visibility: hidden;
+            
+            
+
+
+
+            transform: rotateY(-20deg) scale(0.95);
+            filter: blur(3px);
+
+
+
+            transform-origin: left center;
+
+
+
+            backface-visibility: hidden;
+
+
+
+        }
+
+
+
+
+
+
+
+        .page.active {
+
+
+
+            opacity: 1;
+
+
+
+            visibility: visible;
+            
+            background: #FBF9FF;
+
+
+
+            transform: rotateY(0deg) scale(1);
+            filter: blur(0);
+
+
+
+        }
+
+
+
+
+
+
+
+        /* Thanh cuộn retro cho trang */
+
+
+
+        .page::-webkit-scrollbar {
+
+
+
+            width: 8px;
+            
+
+
+
+        }
+
+
+
+        .page::-webkit-scrollbar-track {
+
+
+
+            background: #D7F9FA;
+
+
+
+        }
+
+
+
+        .page::-webkit-scrollbar-thumb {
+
+
+
+            background: #f8f8f8;
+
+
+
+            border-radius: 4px;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* --- Typography (Phông chữ) --- */
+
+
+
+        
+
+
+
+        /* Tiêu đề lớn (Main Title) */
+
+
+
+        .main-title {
+
+            font-family: 'MuseoModerno', serif;
+
+
+
+            font-weight: 900;
+            
+            background-size: 200% auto;
+
+
+
+            font-size: 5rem;
+
+
+
+            text-align: center;
+
+
+
+            color: #7f1d1d;
+
+
+
+            text-transform: uppercase;
+
+
+
+            letter-spacing: 3px;
+
+
+
+            margin-bottom: 20px;
+
+
+
+            border-bottom: 3px double #333;
+
+
+
+            padding-bottom: 10px;
+
+            
+
+            text-shadow:
+        0 0 10px rgba(127,29,29,0.6),
+        2px 2px 4px rgba(0,0,0,0.7);
+        opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.5s ease;
+    
+    background: linear-gradient(90deg, #7f1d1d, #fb7185, #7f1d1d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: glowMove 4s linear infinite;
+
+
+
+ 
+        }
+        
+        @keyframes glowMove {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+        .main-title.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
+        /* Bài thơ intro */
+
+
+
+        .intro-poem {
+
+
+
+            font-style: italic;
+
+
+
+            text-align: center;
+
+
+
+            margin-bottom: 30px;
+
+
+
+            white-space: pre-line; /* Giữ xuống dòng */
+
+
+
+            font-size: 1.1rem;
+
+
+
+            color: #444;
+            
+            opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.5s ease;
+
+
+
+        }
+        
+        .intro-poem.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+        /* Pinned Post Title */
+
+
+
+        .pinned-title {
+
+
+
+            font-family: 'Noto Serif VN', serif;
+
+
+
+            font-weight: 700;
+
+
+
+            font-size: 1.5rem;
+
+
+
+            margin-bottom: 15px;
+
+
+
+            color: #000;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* Phân chia ngã tự */
+
+
+
+        .nga-tu-header {
+
+
+
+            text-align: center;
+
+
+
+            margin-top: 30px;
+
+
+
+            margin-bottom: 20px;
+
+
+
+        }
+
+
+
+
+
+
+
+        .nga-tu-num {
+
+
+
+            font-size: 1.2rem;
+
+
+
+            font-weight: bold;
+
+
+
+        }
+
+
+
+
+
+
+
+        .nga-tu-title {
+
+
+
+            font-family: 'Playfair Display', serif;
+
+
+
+            font-style: italic;
+
+
+
+            font-weight: 700;
+
+
+
+            font-size: 2.5rem;
+
+
+
+            color: #8b0000; /* Màu đỏ đô hơi cũ */
+
+
+
+            margin-top: -10px;
+
+
+
+        }
+
+
+
+
+
+
+
+        .separator {
+
+
+
+            text-align: center;
+
+
+
+            margin: 20px 0;
+
+
+
+            font-size: 1.2rem;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* Nội dung văn bản thường */
+
+
+
+        .content-text {
+
+
+
+            font-size: 1.15rem;
+            
+            color: #3b2f2f;
+
+
+
+            margin-bottom: 15px;
+
+
+
+            text-align: justify;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* --- Grid Thành Viên (Ngã tự tam) --- */
+
+
+
+        .member-section-title {
+
+
+
+            font-family: 'Noto Serif VN', serif;
+
+
+
+            font-size: 1.3rem;
+
+
+
+            font-weight: 700;
+
+
+
+            margin-top: 20px;
+
+
+
+            margin-bottom: 10px;
+
+
+
+            border-left: 5px solid #333;
+
+
+
+            padding-left: 10px;
+
+
+
+        }
+
+
+
+
+
+
+
+        .members-grid {
+
+
+
+            display: grid;
+
+
+
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+
+
+            gap: 20px;
+
+
+
+            margin-top: 15px;
+
+
+
+        }
+
+
+
+
+
+
+
+        .member-card {
+
+
+
+            background: rgba(255, 255, 255, 0.2);
+
+
+
+            border: 1px solid #a18e6e;
+
+
+
+            padding: 15px;
+
+
+
+            text-align: center;
+
+
+
+            cursor: pointer;
+
+
+
+            transition: all 0.4s ease;
+
+
+
+            position: relative;
+
+
+
+            overflow: hidden;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* Hiệu ứng hover giả cũ */
+
+
+
+        .member-card:hover {
+
+
+
+            background: rgba(139, 0, 0, 0.05);
+
+
+
+            transform: translateY(-6px) scale(1.05);
+
+
+
+            box-shadow: 0 0 20px rgba(127,29,29,0.5);
+
+
+
+        }
+
+
+
+
+
+
+
+        .member-card:hover::after {
+          
+          background: rgba(127, 29, 29, 0.15);
+          
+          transform: translateY(-5px) scale(1.03);
+          
+          box-shadow: 0 0 15px rgba(127,29,29,0.4);
+
+
+
+            content: '';
+
+
+
+            position: absolute;
+
+
+
+            top: 0; left: 0; width: 100%; height: 100%;
+
+
+
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Vết xước */
+
+
+
+            opacity: 0.1;
+
+
+
+        }
+
+
+
+
+
+
+
+        .member-name {
+
+
+
+            font-family: 'Noto Serif VN', serif;
+
+
+
+            font-weight: 700;
+
+
+
+            font-size: 1.1rem;
+
+
+
+            margin-bottom: 5px;
+
+
+
+        }
+
+
+
+
+
+
+
+        .member-feat {
+
+
+
+            font-style: italic;
+
+
+
+            font-size: 0.9rem;
+
+
+
+            color: #555;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* --- Trang Chi Tiết Thành Viên --- */
+
+
+
+        .detail-page {
+
+
+
+            display: none; /* Ẩn mặc định */
+
+
+
+            z-index: 100;
+
+
+
+            background-color: #f1dfb1;
+
+
+
+        }
+
+
+
+        .detail-page.active {
+
+
+
+            display: block;
+
+
+
+            opacity: 1;
+
+
+
+            visibility: visible;
+
+
+
+            transform: rotateY(0deg);
+
+
+
+        }
+
+
+
+
+
+
+
+        .back-btn {
+
+
+
+            background: #8b0000;
+
+
+
+            color: #f4e4bc;
+
+
+
+            border: none;
+
+
+
+            padding: 8px 15px;
+
+
+
+            font-family: 'Noto Serif VN', serif;
+
+
+
+            cursor: pointer;
+
+
+
+            margin-bottom: 20px;
+
+
+
+            transition: background 0.3s;
+
+
+
+        }
+
+
+
+        .back-btn:hover {
+
+
+
+            background: #a00000;
+
+
+
+        }
+
+
+
+
+
+
+
+        .detail-avatar {
+
+
+
+            width: 150px;
+
+
+
+            height: 150px;
+
+
+
+            background: #ccc;
+
+
+
+            margin: 0 auto 20px;
+
+
+
+            display: flex;
+
+
+
+            justify-content: center;
+
+
+
+            align-items: center;
+
+
+
+            border: 5px solid #a18e6e;
+
+
+
+            font-size: 0.8rem;
+
+
+
+            color: #666;
+
+
+
+            /* Bạn có thể thay bằng img thực tế ở JS */
+
+
+
+        }
+
+
+
+
+
+
+
+        .fb-link {
+
+    color: #8b0000;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    position: relative;
+
+    transition: all 0.3s ease;
+
+}
+
+
+
+.fb-link:hover {
+    color: #fb7185;
+    text-shadow: 0 0 10px #fb7185;
+}
+
+
+
+
+
+
+
+        /* --- Nút điều hướng trang --- */
+
+
+
+        .nav-controls {
+
+
+
+            position: absolute;
+
+
+
+            bottom: 20px;
+
+
+
+            right: 20px;
+
+
+
+            z-index: 20;
+
+
+
+            display: flex;
+
+
+
+            gap: 10px;
+
+
+
+        }
+
+
+
+
+
+
+
+        .nav-btn {
+
+
+
+            background: rgba(127, 29, 29, 0.7);
+
+
+
+            color: #f4e4bc;
+
+
+
+            border: none;
+
+
+
+            padding: 10px 15px;
+
+
+
+            font-family: 'Noto Serif VN', serif;
+
+
+
+            cursor: pointer;
+
+
+
+            transition: background 0.3s;
+
+
+
+        }
+
+
+
+
+
+
+
+        .nav-btn:hover {
+
+
+
+            background: rgba(0, 0, 0, 0.9);
+
+
+
+        }
+
+
+
+        
+
+
+
+        .nav-btn:disabled {
+
+
+
+            background: rgba(150, 150, 150, 0.5);
+
+
+
+            cursor: not-allowed;
+
+
+
+        }
+
+
+
+
+
+
+
+        /* --- Music Control --- */
+
+
+
+        .music-control {
+
+
+
+            position: fixed;
+
+
+
+            top: 20px;
+
+
+
+            left: 20px;
+
+
+
+            z-index: 1000;
+
+
+
+        }
+
+
+
+        #music-btn {
+
+
+
+            background: rgba(139, 0, 0, 0.7);
+
+
+
+            color: white;
+
+
+
+            border: 2px solid #f4e4bc;
+
+
+
+            padding: 10px;
+
+
+
+            border-radius: 50%;
+
+
+
+            cursor: pointer;
+
+
+
+            width: 50px; height: 50px;
+
+
+
+            display: flex; justify-content: center; align-items: center;
+
+
+
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+
+
+
+        }
+
+        
+
+        /* --- Intro Overlay --- */
+
+#intro-overlay {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: radial-gradient(circle at center, #1e293b, #020617);
+
+    display: flex;
+    transition: opacity 2s ease;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 9999;
+    
+    
+    
+    backdrop-filter: blur(12px);
+
+}
+
+
+
+/* Hạc bay từ trong ra */
+
+.crane-container {
+    font-size: 60px;
+    position: absolute;
+    top: 60%;
+    left: -20%;
+    opacity: 0;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
+}
+
+.crane-container.show {
+    animation: craneFly 6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes craneFly {
+    0% {
+        left: -20%;
+        transform: translateY(80px) scale(0.2) rotate(-15deg);
+        opacity: 0;
+    }
+    30% { opacity: 1; }
+    60% {
+        transform: translateY(-10px) scale(1.05) rotate(3deg);
+    }
+    100% {
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+
+/* Lá thư */
+
+.letter {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0;
+    font-size: 50px;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 20px #c7d2fe,
+        0 0 40px #c7d2fe;
+}
+
+.letter.show {
+    animation: letterFull 3.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes letterFull {
+    0% {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 0;
+    }
+    40% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 1;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1.7);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.2);
+        opacity: 1;
+    }
+}
+
+/* --- THƯ BIẾN THÀNH BỤI --- */
+
+.letter-dissolve {
+    animation: letterDissolve 2.5s ease forwards;
+}
+
+@keyframes letterDissolve {
+    0% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 1;
+        filter: blur(0) brightness(1.2);
+    }
+
+    30% {
+        transform: translate(-50%, -50%) scale(1.8);
+        filter: blur(2px) brightness(1.5);
+    }
+
+    60% {
+        transform: translate(-50%, -60%) scale(2.2);
+        opacity: 0.7;
+        filter: blur(6px) brightness(2);
+    }
+
+    100% {
+        transform: translate(-50%, -100%) scale(3);
+        opacity: 0;
+        filter: blur(20px) brightness(3);
+    }
+}
+
+
+/* Ẩn cả hạc + thư */
+
+.fade-out {
+    animation: fadeOut 1.5s ease forwards;
+    pointer-events: none;
+}
+
+
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.6);
+        visibility: hidden;
+    }
+}
+
+
+
+
+
+/* Text */
+
+#intro-text {
+    max-width: 750px;
+    text-align: center;
+    font-family: 'Noto Serif VN', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 2;
+    color: #c7d2fe;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    text-shadow: 
+        0 0 10px rgba(199,210,254,0.6),
+        0 0 30px rgba(199,210,254,0.3);
+
+    transition: all 2s ease;
+}
+
+.intro-zoom {
+    animation: zoomCinematic 6s ease forwards;
+}
+
+@keyframes zoomCinematic {
+    0% {
+        transform: scale(1.2);
+        filter: brightness(0.5);
+    }
+    50% {
+        filter: brightness(0.8);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+/* fade tổng */
+
+.fade-overlay {
+    animation: fadeOverlay 3s ease forwards;
+}
+
+@keyframes fadeOverlay {
+    to {
+        opacity: 0;
+    }
+}
+/* chữ glow nhẹ */
+#intro-text {
+    text-shadow: 
+        0 0 10px rgba(153,153,255,0.6),
+        0 0 20px rgba(153,153,255,0.4);
+}
+
+
+
+#mail-effect {
+
+    position: fixed;
+
+    bottom: 50px;
+
+    left: 50%;
+
+    transform: translateX(-50%) scale(0);
+
+    font-size: 40px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+}
+
+
+
+.mail-fly {
+
+    animation: mailFly 1.5s ease forwards;
+
+}
+
+
+
+@keyframes mailFly {
+
+    0% {
+
+        transform: translateX(-50%) translateY(0) scale(0.5);
+
+        opacity: 0;
+
+    }
+
+    30% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: translateX(-50%) translateY(-200px) scale(1.5);
+
+        opacity: 0;
+
+    }
+
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(127,29,29,0.4), transparent);
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+#fog {
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 70%);
+    animation: fogMove 20s linear infinite;
+    z-index: 9998;
+    pointer-events: none;
+}
+
+@keyframes fogMove {
+    from { transform: translate(-10%, -10%); }
+    to { transform: translate(10%, 10%); }
+}
+
+#start-btn {
+    position: relative;
+    z-index: 10000;
+    overflow: hidden;
+
+    padding: 14px 36px;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+
+    background: linear-gradient(90deg, #7f1d1d, #fb7185, #7f1d1d);
+    background-size: 200%;
+
+    border: 1px solid #f4e4bc;
+    color: #fff;
+
+    animation: btnGlow 3s linear infinite;
+    box-shadow: 0 0 15px rgba(127,29,29,0.6);
+}
+
+@keyframes btnGlow {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+
+#start-btn::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    background: rgba(255,255,255,0.5);
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+}
+
+@keyframes rippleAnim {
+    to {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+#dust {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+
+
+
+
+
+    </style>
+    
+    
+
+
+
+</head>
+
+
+
+<body>
+  
+  <div id="fog"></div>
+  
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+
+
+  <div id="mail-effect">✉️</div>
+
+
+
+  <!-- Intro -->
+
+  <div id="intro-overlay">
+
+    <video id="intro-video" autoplay muted loop>
+        <source src="https://cdn.coverr.co/videos/coverr-ocean-waves-1574/1080p.mp4" type="video/mp4">
+    </video>
+
+    <canvas id="dust"></canvas>
+
+    <button id="start-btn">Bắt đầu</button>
+
+    <div class="crane-container">🕊️</div>
+    <div class="letter" id="letter">✉️</div>
+
+    <div id="intro-text"></div>
+
+</div>
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    <div class="newspaper-background"></div>
+
+
+
+    <div class="newspaper-overlay"></div>
+
+
+
+
+
+
+
+    <div class="ocean">
+
+
+
+        <div class="wave"></div>
+
+
+
+        <div class="wave"></div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="music-control">
+
+
+
+        <button id="music-btn">🎵</button>
+
+
+
+    </div>
+
+
+
+    <audio id="bg-music"loop>
+
+
+
+        <source src="https://files.catbox.moe/1y106v.mp3" type="audio/mpeg">
+
+
+
+      
+
+
+
+    </audio>
+
+
+
+
+
+
+
+    <div class="book-container" id="book">
+
+
+
+        
+
+
+
+        <div class="page active" id="page-1">
+
+
+
+            <h1 class="main-title">VẠN LÝ TRẦM LUÂN</h1>
+
+
+
+            
+
+
+
+            <p class="intro-poem">
+
+
+
+Ngữ khang giữa chốn phong trần,
+
+
+
+Nội tâm đã động, muôn lần chẳng phai.
+
+
+
+Trầm luân ngàn dặm không tài,
+
+
+
+Gươm treo chữ nghĩa, sẹo dài ái duyên.
+
+
+
+Vô danh, bất chức, đành liều
+
+
+
+Viết cho gươm cũ, dẫu nhiều khó khăn.
+
+
+
+Băn khoăn nên viết thưa rằng:
+
+
+
+Thà hay một chữ, đỡ hằn nhiều câu.
+
+
+
+Xưng danh nơi vốn vạn cầu,
+
+
+
+Phong lưu khắc chốn, rầu lo sương dày.
+
+
+
+Nếu ai hỏi đến tên này,
+
+
+
+Xin thưa Vạn Lý chẳng rầy Trầm Luân.
+
+
+
+            </p>
+
+
+
+            
+
+
+
+
+
+        </div>
+
+        <div class="page" id="page-2">
+
+
+
+    <h2 class="pinned-title" style="text-align:center; font-size:2rem;">
+
+        𝐏𝐈𝐍𝐍𝐄𝐃 𝐏𝐎𝐒𝐓 —
+
+    </h2>
+
+
+
+    <div class="separator">—————————</div>
+
+
+
+    <p class="content-text">
+
+        Giữa đại dương vô tận, nơi sóng gió là nhạc khúc của tự do, nơi máu và giấc mộng cùng đổ xuống từng tấc thủy đồ, ngã đẳng không sinh ra để bay theo lộ trình sẵn vạch, cũng chẳng cúi đầu giữa bầu trời của kẻ khác. Chúng ta là kẻ trầm luân trong vạn lý, lấy phong ba làm tân khách, lấy minh nguyệt làm đồng hành.
+
+    </p>
+
+
+
+    <p class="content-text">
+
+        Mỗi trận hải ba, mỗi cơn cuồng lãng đều là minh chứng cho tâm huyết bất khuất của hải tặc chi hồn. Không hướng về an ổn, cũng chẳng màng phú quý, điều chúng ta tìm kiếm chính là văn tự chi tự do, là huyết nhiệt được khắc ghi nơi trường thiên hải vận.
+
+    </p>
+
+
+
+    <div class="separator">『 』</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+        <div class="page" id="page-3">
+
+
+
+            <div class="nga-tu-header">
+
+
+
+                <div class="nga-tu-num">㈠ 𝘕𝘨𝘢̃ 𝘵𝘶̛̣ 𝘯𝘩𝘢̂́𝘵</div>
+
+
+
+                <div class="nga-tu-title">•— gió.</div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <p class="content-text">
+
+
+
+                | ▭ Hoàng hôn rơi xuống thân ta, thiên địa thẫm màu tà dương quạnh quẽ. Bóng ta phiêu bạc, như lữ khách lạc giữa vạn trùng dương hải, như cánh chim mỏi cánh giữa tầng không thăm thẳm. Sóng gió nuốt lấy giấc mộng, máu đỏ hòa vào thủy triều, để lại dấu tích chẳng dễ phai tàn.
+
+
+
+            </p>
+
+
+
+            <p class="content-text">
+
+
+
+                | ▭ Có kẻ từng hỏi: là phù vân thoáng qua, hay dư vang còn vọng lại ngàn đời? Là bọt sóng hư vô, hay dấu khắc vạn lý vào lòng biển cả? Danh tự ấy, tựa khúc hải triều ngân xa.
+
+
+
+            </p>
+
+
+
+            <div class="separator">『 』</div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="page" id="page-4">
+
+
+
+            <div class="nga-tu-header">
+
+
+
+                <div class="nga-tu-num">㈡ 𝘕𝘨𝘢̃ 𝘵𝘶̛̣ 𝘯𝘩𝘪̀</div>
+
+
+
+                <div class="nga-tu-title">•— sóng.</div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <p class="content-text">
+
+
+
+                | ▭ Danh xưng <strong style="color:#000">𝐕𝐚̣𝐧 𝐋𝐲́ 𝐓𝐫𝐚̂̀𝐦 𝐋𝐮𝐚̂𝐧</strong>, như vết sấm hằn giữa bầu trời giông bão. Đây không phải lời xưng tụng, mà là dấu ấn của kẻ từng trầm mình dưới đáy tối, rồi đứng dậy cùng sóng cả.
+
+
+
+            </p>
+
+
+
+            <p class="content-text">
+
+
+
+                | ▭ Trong mịt mù thủy lộ, kẻ mang danh ấy chẳng tìm chốn yên an, cũng chẳng cầu ánh sáng dịu hiền. Chúng ta chọn sóng gió làm tri kỷ, chọn đại dương làm mộ phần, để khi tiếng triều ngân mãi không ngừng, người đời còn nhớ đã từng có <strong style="color:#000">𝐕𝐚̣𝐧 𝐋𝐲́ 𝐓𝐫𝐚̂̀𝐦 𝐋𝐮𝐚̂𝐧</strong>.
+
+
+
+            </p>
+
+
+
+            <div class="separator">『 』</div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="page" id="page-5">
+
+
+
+            <div class="nga-tu-header">
+
+
+
+                <div class="nga-tu-num">㈢ 𝘕𝘨𝘢̃ 𝘵𝘶̛̣ 𝘵𝘢𝘮</div>
+
+
+
+                <div class="nga-tu-title">•— cát.</div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <p class="content-text">
+
+
+
+                | ▭ Trên dải cát mênh mang, có vết đỏ chẳng phải của hoàng hôn, cũng chẳng phải của phù sa, mà là dấu loang từ những linh hồn đã hòa vào biển. Sóng phủ, gió vùi, nhưng kỳ lạ thay, dấu ấy chưa từng phai hẳn, như lời thì thầm giấu kín dưới lớp cát. Người đời chỉ truyền nhau rằng, ở nơi triều sóng chạm trời, có những bóng hình bước ra từ sự nhiệt huyết và tâm động, sống để rồi chìm, chìm để rồi còn.
+
+
+
+            </p>
+
+
+
+
+
+
+
+            <div class="member-section-title">| • 𝙁𝙤𝙪𝙣𝙙𝙚𝙧/𝙈𝙖𝙣𝙖𝙜𝙚𝙧:</div>
+
+
+
+            <div class="members-grid">
+
+
+
+                <div class="member-card" data-id="tu-shanks" data-name="Tư feat Shanks" data-feat="Shanks" data-fb="https://www.facebook.com/tushankstocdo" data-desc="tư">
+
+
+
+                    <div class="member-name">Tư feat Shanks</div>
+
+
+
+                    <div class="member-feat">feat Shanks</div>
+
+
+
+                </div>
+
+
+
+                <div class="member-card" data-id="hoang-trieu" data-name="Hoàng Triều feat Roronoa Zoro" data-feat="Roronoa Zoro" data-fb="https://www.facebook.com/htrieudz" data-desc="triều">
+
+
+
+                    <div class="member-name">Hoàng Triều feat Roronoa Zoro</div>
+
+
+
+                    <div class="member-feat">feat Roronoa Zoro</div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="member-section-title">| • 𝙈𝙚𝙢𝙗𝙚𝙧:</div>
+
+
+
+            <div class="members-grid">
+
+
+
+                <div class="member-card" data-name="tv1" data-fb="fbtv1">
+
+
+
+                    <div class="member-name">tenn tv1</div>
+
+
+
+                    <div class="member-feat">vtro tv1</div>
+
+
+
+                </div>
+
+
+
+                <div class="member-card" data-name="tv2" data-fb="fb tv2">
+
+
+
+                    <div class="member-name">ten tv2</div>
+
+
+
+                    <div class="member-feat">vtr</div>
+
+
+
+                </div>
+
+
+
+                <div class="member-card" data-name="tv3" data-fb="fbtv3">
+
+
+
+                    <div class="member-name">ten</div>
+
+
+
+                    <div class="member-feat">vtr</div>
+
+
+
+                </div>
+
+
+
+                <div class="member-card" data-name="tv4" data-fb="fb">
+
+
+
+                    <div class="member-name">ten</div>
+
+
+
+                    <div class="member-feat">vtr</div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="separator" style="margin-top:40px">『 』</div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="page" id="page-6">
+
+
+
+            <div class="nga-tu-header">
+
+
+
+                <div class="nga-tu-num">㈣ 𝘕𝘨𝘢̃ 𝘵𝘶̛̣ 𝘵𝘶̛́</div>
+
+
+
+                <div class="nga-tu-title">•— mưa.</div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <p class="content-text">
+
+
+
+                | ▭ Mưa rơi không ngừng, phủ mờ nhân thế, che đi lằn ranh giữa thực và hư. Trong màn mưa ấy, có kẻ nghe được nhịp bước, có kẻ thấy được bóng hình, lại có kẻ chỉ cảm thấy dư hương mặn chát còn vương nơi khóe môi. Bọn ta hiện hữu như vậy. Chẳng rõ ràng, chẳng phô trương, nhưng chẳng thể nào hoàn toàn lãng quên. Và nếu ngày nào đó, khi cơn mưa lại ghé qua nhân gian, mong rằng giữa ngàn âm thanh hỗn độn, người còn nhớ để khẽ gọi tên ta.
+
+
+
+            </p>
+
+
+
+            <div class="separator">『 』</div>
+
+
+
+        </div>
+
+        
+
+        <div class="page" id="page-7">
+
+
+
+    <div class="nga-tu-header">
+
+        <div class="nga-tu-num">㈤ 𝘕𝘨𝘢̃ 𝘵𝘶̛̣ 𝘯𝘨𝘶̃</div>
+
+        <div class="nga-tu-title">•— hồi âm.</div>
+
+    </div>
+
+
+
+    <p class="content-text" style="text-align:center;">
+
+        | ▭ Nếu một ngày nào đó, giữa muôn trùng sóng gió, ngươi muốn gửi lại một lời,
+
+        hay chỉ đơn giản là tìm đến những kẻ đồng hành trong hành trình trầm luân,
+
+        nơi đây vẫn luôn đợi.
+
+    </p>
+
+
+
+    <div class="separator">—————————</div>
+
+
+
+    <p class="content-text" style="text-align:center;">
+
+        <strong>Huyết ấn liên hệ:</strong><br><br>
+
+
+
+        📧 Gmail:<br>
+
+        <a href="mailto:vanlytramluanl@gmail.com" class="fb-link">vanlytramluan@gmail.com</a><br><br>
+
+
+
+        🌐 Facebook:<br>
+
+        <a href="https://www.facebook.com/profile.php?id=61574479454033" target="_blank" class="fb-link">
+
+            Vạn Lý Trầm Luân
+
+        </a>
+
+    </p>
+
+
+
+    <div class="separator">『 』</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+        <div class="page detail-page" id="member-detail-page">
+
+
+
+            <button class="back-btn" id="close-detail">← Trở về danh sách</button>
+
+
+
+            
+
+
+
+            <div class="nga-tu-header">
+
+
+
+                <h2 class="main-title" id="det-full-name">Tên Thành Viên</h2>
+
+
+
+                <div class="nga-tu-title" id="det-feat">feat Character</div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+            <p class="content-text" id="det-desc" style="text-align:center; font-style: italic;">
+
+
+
+                </p>
+
+
+
+
+
+
+
+            <div class="separator">—————————</div>
+
+
+
+            
+
+
+
+            <p class="content-text" style="text-align: center;">
+
+
+
+                <strong>Liên lạc/Huyết ấn:</strong><br>
+
+
+
+                <a href="#" class="fb-link" id="det-fb-link" target="_blank">link facebook</a>
+
+
+
+            </p>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="nav-controls" id="main-nav">
+
+
+
+            <button class="nav-btn" id="prev-btn" disabled><- Trước</button>
+
+
+
+            <button class="nav-btn" id="next-btn">Sau -></button>
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <script>
+
+
+
+        // --- Xử lý Chuyển Trang ---
+
+
+
+        const pages = document.querySelectorAll('.page:not(.detail-page)');
+
+
+
+        const prevBtn = document.getElementById('prev-btn');
+
+
+
+        const nextBtn = document.getElementById('next-btn');
+
+
+
+        let currentPageIndex = 0;
+
+
+
+
+
+
+
+        function updateNavButtons() {
+
+
+
+            prevBtn.disabled = currentPageIndex === 0;
+
+
+
+            nextBtn.disabled = currentPageIndex === pages.length - 1;
+
+
+
+        }
+
+
+
+
+
+
+
+        function showPage(index) {
+
+
+
+            // Ẩn trang hiện tại
+
+
+
+            pages[currentPageIndex].classList.remove('active');
+
+
+
+            // Cập nhật chỉ số
+
+
+
+            currentPageIndex = index;
+
+
+
+            // Hiển thị trang mới
+
+
+
+            pages[currentPageIndex].classList.add('active');
+
+
+
+            updateNavButtons();
+
+
+
+        }
+
+
+
+
+
+
+
+        prevBtn.addEventListener('click', () => {
+
+
+
+            if (currentPageIndex > 0) {
+
+
+
+                showPage(currentPageIndex - 1);
+
+
+
+            }
+
+
+
+        });
+
+
+
+
+
+
+
+        nextBtn.addEventListener('click', () => {
+
+
+
+            if (currentPageIndex < pages.length - 1) {
+
+
+
+                showPage(currentPageIndex + 1);
+
+
+
+            }
+
+
+
+        });
+
+
+
+
+
+
+
+        // --- Xử lý Trang Chi Tiết Thành Viên ---
+
+
+
+        const memberCards = document.querySelectorAll('.member-card');
+
+
+
+        const detailPage = document.getElementById('member-detail-page');
+
+
+
+        const mainNav = document.getElementById('main-nav');
+
+
+
+        const closeDetailBtn = document.getElementById('close-detail');
+
+
+
+
+
+
+
+        // Các phần tử trong trang chi tiết
+
+
+
+        const detFullName = document.getElementById('det-full-name');
+
+
+
+        const detFeat = document.getElementById('det-feat');
+
+
+
+        const detDesc = document.getElementById('det-desc');
+
+
+
+        const detFbLink = document.getElementById('det-fb-link');
+
+
+
+
+
+
+
+        memberCards.forEach(card => {
+
+
+
+            card.addEventListener('click', () => {
+
+
+
+                // Lấy dữ liệu từ thẻ
+
+
+
+                const name = card.getAttribute('data-name');
+
+
+
+                const feat = card.getAttribute('data-feat') || card.querySelector('.member-feat').innerText;
+
+
+
+                const fb = card.getAttribute('data-fb');
+
+
+
+                const desc = card.getAttribute('data-desc') || "Kẻ trầm luân chưa để lại ký sự chi tiết.";
+
+
+
+
+
+
+
+                // Điền thông tin vào trang chi tiết
+
+
+
+                detFullName.innerText = name;
+
+
+
+                detFeat.innerText = feat;
+
+
+
+                detDesc.innerText = desc;
+
+
+
+                detFbLink.href = fb;
+
+
+
+                detFbLink.innerText = fb;
+
+
+
+
+
+
+
+                // Hiển thị trang chi tiết, ẩn điều hướng chính
+
+
+
+                detailPage.classList.add('active');
+
+
+
+                mainNav.style.display = 'none';
+
+
+
+            });
+
+
+
+        });
+
+
+
+
+
+
+
+        closeDetailBtn.addEventListener('click', () => {
+
+
+
+            // Ẩn trang chi tiết, hiện lại điều hướng
+
+
+
+            detailPage.classList.remove('active');
+
+
+
+            mainNav.style.display = 'flex';
+
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+        // --- Xử lý Nhạc Nền ---
+
+
+
+        const musicBtn = document.getElementById('music-btn');
+
+
+
+        const audio = document.getElementById('bg-music');
+
+
+
+        let isPlaying = false;
+
+
+
+
+
+
+
+        musicBtn.addEventListener('click', () => {
+
+
+
+            if (isPlaying) {
+
+
+
+                audio.pause();
+
+
+
+                musicBtn.innerText = '🔇';
+
+
+
+            } else {
+
+
+
+                audio.play().catch(error => {
+
+
+
+                    console.log("Trình duyệt chặn tự động phát. Cần tương tác người dùng.");
+
+
+
+                    alert("Hãy click vào trang web để nghe nhạc nhé!");
+
+
+
+                });
+
+
+
+                musicBtn.innerText = '🎵';
+
+
+
+            }
+
+
+
+            isPlaying = !isPlaying;
+
+
+
+        });
+
+
+
+
+
+
+
+        // Thử tự động phát khi user click lần đầu vào body (để lách luật trình duyệt)
+
+
+
+        document.body.addEventListener('click', function() {
+    if (!isPlaying) {
+        audio.play().then(() => {
+            isPlaying = true;
+            musicBtn.innerText = '🎵';
+        }).catch(() => {});
+    }
+}, { once: true });
+
+
+
+        // autoplay thật (mở tiếng sau khi load)
+
+
+
+
+
+
+
+const introText = document.getElementById("intro-text");
+
+const introOverlay = document.getElementById("intro-overlay");
+
+const crane = document.querySelector(".crane-container");
+
+const letter = document.getElementById("letter");
+
+
+
+const message = `Một cánh hạc vượt ngàn dặm,\n
+mang theo lời hỏi thăm đến những kẻ hữu duyên.\n
+Gió cuốn mây trôi, sương phủ lối xa,\n
+vẫn một lòng chẳng đổi, nhẹ nhàng lướt giữa tầng không tĩnh lặng.\n\n
+
+Nguyện người an khang, tâm không loạn,\n
+chí không mòn giữa phong ba nhân thế.\n
+Dẫu bể dâu dời đổi, lòng người khó đo,\n
+xin giữ lấy một phần thanh tịnh, như trăng sáng giữa đêm dài.`;
+
+// hiệu ứng từng từ
+
+function typeWriter(text, element, speed =100, callback) {
+    let i = 0;
+    element.innerHTML = "";
+
+    function typing() {
+        if (i < text.length) {
+            if (text[i] === "\n") {
+                element.innerHTML += "<br>";
+            } else {
+                element.innerHTML += text[i];
+            }
+            i++;
+            setTimeout(typing, speed);
+        } else {
+            if (callback) callback();
+        }
+    }
+
+    typing();
+}
+
+
+
+
+
+const startBtn = document.getElementById("start-btn");
+
+startBtn.addEventListener("click", () => {
+
+    startBtn.style.opacity = "0";
+    startBtn.style.pointerEvents = "none";
+
+    // 1. hạc bay
+    setTimeout(() => {
+        crane.classList.add("show");
+    }, 500);
+
+    // 2. hạc bay xong → fade
+    setTimeout(() => {
+        crane.classList.add("fade-out");
+
+        setTimeout(() => {
+            crane.style.display = "none";
+
+            // 3. THƯ xuất hiện SAU KHI HẠC BIẾN
+            // lấy vị trí thư
+            // 3. THƯ xuất hiện
+// 3. THƯ xuất hiện
+letter.classList.add("show");
+
+// 4. sau 2.5s mới bắt đầu tan
+setTimeout(() => {
+
+    const rect = letter.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    explodeLetterToDust(centerX, centerY);
+
+    letter.classList.add("letter-dissolve");
+
+    setTimeout(() => {
+        letter.style.display = "none";
+    }, 2000);
+
+}, 2500);
+
+            // 4. thư tồn tại 2s rồi biến
+            setTimeout(() => {
+                letter.classList.add("fade-out");
+
+                setTimeout(() => {
+                    letter.style.display = "none";
+
+                    // 5. LÚC NÀY MỚI HIỆN CHỮ
+                    introText.style.opacity = 1;
+                    introText.style.transform = "translateY(0)";
+
+                    typeWriter(message, introText, 35, () => {
+
+                        setTimeout(() => {
+                            introOverlay.classList.add("fade-overlay");
+
+                            setTimeout(() => {
+                                introOverlay.style.display = "none";
+                                startMainAnimation();
+
+                                audio.play().then(() => {
+                                    isPlaying = true;
+                                    musicBtn.innerText = '🎵';
+                                }).catch(() => {});
+
+                            }, 3000);
+
+                        }, 2000);
+
+                    });
+
+                }, 1200);
+
+            }, 2000);
+
+        }, 1200);
+
+    }, 4000);
+
+});
+    
+
+
+
+    // 5. Kết thúc intro
+
+   
+
+    
+
+
+
+
+const mailEffect = document.getElementById("mail-effect");
+
+
+
+document.querySelectorAll(".fb-link").forEach(link => {
+
+    link.addEventListener("click", (e) => {
+
+
+
+        // vẫn cho mở link bình thường
+
+        // KHÔNG preventDefault
+
+
+
+        mailEffect.classList.remove("mail-fly");
+
+        void mailEffect.offsetWidth;
+
+        mailEffect.classList.add("mail-fly");
+
+
+
+    });
+
+});
+
+function startMainAnimation() {
+
+    const title = document.querySelector(".main-title");
+    const poem = document.querySelector(".intro-poem");
+
+    // hiện title trước
+    setTimeout(() => {
+        title.classList.add("show");
+    }, 300);
+
+    // rồi tới thơ
+    setTimeout(() => {
+        poem.classList.add("show");
+    }, 1500);
+
+}
+
+
+const cursor = document.getElementById("cursor-glow");
+
+if (cursor) {
+    document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+    });
+}
+
+audio.volume = 0;
+audio.play();
+
+let vol = 0;
+const fade = setInterval(() => {
+    if (vol < 1) {
+        vol += 0.05;
+        audio.volume = vol;
+    } else {
+        clearInterval(fade);
+    }
+}, 100);
+
+startBtn.addEventListener("click", function(e) {
+
+    // ripple
+    const ripple = document.createElement("span");
+    const rect = this.getBoundingClientRect();
+
+    ripple.style.left = (e.clientX - rect.left) + "px";
+    ripple.style.top = (e.clientY - rect.top) + "px";
+
+    ripple.style.position = "absolute";
+    ripple.style.width = "120px";
+    ripple.style.height = "120px";
+    ripple.style.background = "rgba(255,255,255,0.4)";
+    ripple.style.borderRadius = "50%";
+    ripple.style.transform = "translate(-50%, -50%) scale(0)";
+    ripple.style.animation = "rippleAnim 0.6s ease";
+
+    this.appendChild(ripple);
+
+    setTimeout(() => ripple.remove(), 600);
+
+});
+
+const canvas = document.getElementById("dust");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.5,
+        d: Math.random() * 1
+    });
+}
+
+function drawDust() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "rgba(200,220,255,0.6)";
+    ctx.beginPath();
+
+    for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        ctx.moveTo(p.x, p.y);
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+    }
+
+    ctx.fill();
+    updateDust();
+}
+
+let angle = 0;
+
+function updateDust() {
+    angle += 0.003;
+
+    for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+
+        // nếu là bụi từ thư
+        if (p.vx !== undefined) {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            p.vx *= 0.96;
+            p.vy *= 0.96;
+
+            p.life--;
+
+            if (p.life <= 0) {
+                particles.splice(i, 1);
+                i--;
+                continue;
+            }
+        } else {
+            // bụi nền cũ
+            p.y += Math.cos(angle + p.d) + 0.3;
+            p.x += Math.sin(angle + p.d) * 0.5;
+
+            if (p.y > canvas.height) {
+                p.y = 0;
+                p.x = Math.random() * canvas.width;
+            }
+        }
+    }
+}
+
+setInterval(drawDust, 30);
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+
