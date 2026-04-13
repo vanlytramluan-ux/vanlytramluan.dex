@@ -85,23 +85,13 @@
 
 
 
-            height: 100vh;
+            min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-
-
-            display: flex;
-
-
-
-            justify-content: center;
-
-
-
-            align-items: center;
-
-
-
-            overflow: hidden; /* Giữ sóng ở đáy */
+    overflow-x: hidden;
+    overflow-y: auto;
             
             background: linear-gradient(to bottom, #0f172a, #020617);
     color: #e5e7eb;
@@ -401,16 +391,10 @@
         .book-container {
 
 
-
-            width: 80%;
-
-
-
-            height: 85vh;
-
-
-
-            max-width: 1000px;
+    width: 92%;
+    height: auto;
+    min-height: 90dvh;
+    max-width: 1000px;
 
 
 
@@ -470,7 +454,7 @@
 
 
 
-            padding: 40px 60px;
+            padding: 25px 18px;
 
 
 
@@ -1902,6 +1886,56 @@
     z-index: 9998;
 }
 
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .nga-tu-title {
+        font-size: 1.8rem;
+    }
+
+    .content-text {
+        font-size: 1rem;
+    }
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+#after-intro {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    color: white;
+    font-size: 1.8rem;
+    opacity: 0;
+
+    transition: opacity 1.5s ease;
+    z-index: 9999;
+}
+
+.book-container {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 1.5s ease;
+}
+
 
 
 
@@ -2019,6 +2053,8 @@
 
 
     </audio>
+    
+    <div id="after-intro">Đôi lời về Vạn Lý Trầm Luân</div>
 
 
 
@@ -2549,10 +2585,57 @@ Xin thưa Vạn Lý chẳng rầy Trầm Luân.
         </a>
 
     </p>
+    
+</div>
 
 
 
+    
+
+
+<div class="page" id="page-8">
+    <h2 class="pinned-title" style="text-align:center; font-size:2rem;">
+        𝐇𝐈̀𝐍𝐇 𝐀̉𝐍𝐇 𝐊𝐘́ 𝐒𝐔̛̣
+    </h2>
+
+    <div class="separator">—————————</div>
+
+    <div class="gallery">
+        <img src="https://picsum.photos/300/200?1">
+        <img src="https://picsum.photos/300/200?2">
+        <img src="https://picsum.photos/300/200?3">
+        <img src="https://picsum.photos/300/200?4">
+        <img src="https://picsum.photos/300/200?5">
+        <img src="https://picsum.photos/300/200?6">
+        <img src="https://picsum.photos/300/200?7">
+        <img src="https://picsum.photos/300/200?8">
+        <img src="https://picsum.photos/300/200?9">
+        <img src="https://picsum.photos/300/200?10">
+    </div>
+</div>
+
+<div class="page" id="page-9">
+    <div class="nga-tu-header">
+        <div class="nga-tu-title">•— hồi kết.</div>
+    </div>
+
+    <p class="content-text" style="text-align:center;">
+        Nếu ngươi đã đọc đến tận nơi này,  
+        có lẽ giữa muôn trùng nhân hải,  
+        chúng ta đã từng lướt qua nhau một lần.
+        <br><br>
+        Vạn Lý Trầm Luân không mong lưu danh,  
+        chỉ mong lưu lại một chút cảm xúc nơi lòng người.
+        <br><br>
+        Nguyện gió yên, sóng lặng,  
+        và nếu một ngày hữu duyên tái ngộ —  
+        mong rằng ngươi vẫn nhớ đến nơi này.
+    </p>
+    
     <div class="separator">『 』</div>
+</div>
+
+    
 
 
 
@@ -3178,7 +3261,10 @@ setTimeout(() => {
 
                             setTimeout(() => {
                                 introOverlay.style.display = "none";
-                                startMainAnimation();
+
+showIntroTitle(); // ✅ thêm ở đây
+
+
 
                                 audio.play().then(() => {
                                     isPlaying = true;
@@ -3375,6 +3461,33 @@ function updateDust() {
 
 setInterval(drawDust, 30);
 
+function showIntroTitle() {
+    const text = document.getElementById("after-intro");
+    const book = document.getElementById("book");
+
+    // hiện chữ "Đôi lời..."
+    text.style.opacity = 1;
+
+    setTimeout(() => {
+        // cho chữ biến mất
+        text.style.opacity = 0;
+
+        setTimeout(() => {
+            // ẩn intro hoàn toàn
+            introOverlay.style.display = "none";
+
+            // 👉 hiện trang giấy SAU CÙNG
+            book.style.opacity = 1;
+            book.style.transform = "scale(1)";
+
+            // chạy animation title + thơ
+            startMainAnimation();
+
+        }, 1500);
+
+    }, 2000);
+}
+
 
 
 
@@ -3388,9 +3501,6 @@ setInterval(drawDust, 30);
 
 
 </html>
-
-
-
 
 
 
